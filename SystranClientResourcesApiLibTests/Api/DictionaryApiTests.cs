@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Systran.ResourcesClientLib.Client;
 using Systran.ResourcesClientLib.Model;
+using System.IO;
 
 namespace Systran.ResourcesClientLib.Api.Tests
 {
@@ -21,11 +22,16 @@ namespace Systran.ResourcesClientLib.Api.Tests
         [ClassInitialize()]
         public static void ClassInit(TestContext context)
         {
-            client = new ApiClient("https://platformapi-stag.systran.net:8904");
+            client = new ApiClient("https://platform.systran.net:8904");
+            Configuration.apiClient = client;
             Configuration.apiClient = client;
             Dictionary<String, String> keys = new Dictionary<String, String>();
-            keys.Add("key", "a72c2f99-5841-4259-88a6-f75f9860f992");
-            Configuration.apiKey = keys;
+            string key;
+            using (StreamReader streamReader = new StreamReader("../../key.txt", Encoding.UTF8))
+            {
+                key = streamReader.ReadToEnd();
+            }
+            keys.Add("key", key); Configuration.apiKey = keys; Configuration.apiKey = keys;
             dictionaryApi = new DictionaryApi(Configuration.apiClient);
 
 
@@ -97,18 +103,6 @@ namespace Systran.ResourcesClientLib.Api.Tests
         }
 
         [TestMethod()]
-        public void ResourcesDictionaryEntryListPostAsyncTest()
-        {
-            EntriesListFilters entriesListFilters = new EntriesListFilters();
-            EntriesListResponse entriesListResponse = new EntriesListResponse();
-            Task.Run(async () =>
-            {
-                entriesListResponse = await dictionaryApi.ResourcesDictionaryEntryListPostAsync(dictionaryId, entriesListFilters);
-            }).Wait();
-            Assert.IsNotNull(entriesListResponse.TotalNoLimit);
-        }
-
-        [TestMethod()]
         public void ResourcesDictionaryEntryUpdatePostTest()
         {
 
@@ -171,53 +165,18 @@ namespace Systran.ResourcesClientLib.Api.Tests
         }
 
         [TestMethod()]
-        public void ResourcesDictionaryLookupGetAsyncTest()
-        {
-            LookupResponse lookupResponse = new LookupResponse();
-            List<string> inputs = new List<string>();
-            inputs.Add("example");
-            Task.Run(async () =>
-            {
-                lookupResponse = await dictionaryApi.ResourcesDictionaryLookupGetAsync("en", "fr", inputs, null, null);
-            }).Wait();
-            Assert.IsNotNull(lookupResponse.Outputs);
-        }
-
-        [TestMethod()]
         public void ResourcesDictionaryLookupSupportedLanguagesGetTest()
         {
             LookupSupportedLanguageResponse lookupSupportedLanguageResponse = new LookupSupportedLanguageResponse();
             lookupSupportedLanguageResponse = dictionaryApi.ResourcesDictionaryLookupSupportedLanguagesGet(null, null, null);
             Assert.IsNotNull(lookupSupportedLanguageResponse.LanguagePairs);
         }
-
-        [TestMethod()]
-        public void ResourcesDictionaryLookupSupportedLanguagesGetAsyncTest()
-        {
-            LookupSupportedLanguageResponse lookupSupportedLanguageResponse = new LookupSupportedLanguageResponse();
-            Task.Run(async () =>
-            {
-                lookupSupportedLanguageResponse = await dictionaryApi.ResourcesDictionaryLookupSupportedLanguagesGetAsync(null, null, null);
-            }).Wait();
-            Assert.IsNotNull(lookupSupportedLanguageResponse.LanguagePairs);
-        }
-
+        
         [TestMethod()]
         public void ResourcesDictionarySupportedLanguagesGetTest()
         {
             SupportedLanguagesResponse supportedLanguagesResponse = new SupportedLanguagesResponse();
             supportedLanguagesResponse = dictionaryApi.ResourcesDictionarySupportedLanguagesGet();
-            Assert.IsNotNull(supportedLanguagesResponse.Languages);
-        }
-
-        [TestMethod()]
-        public void ResourcesDictionarySupportedLanguagesGetAsyncTest()
-        {
-            SupportedLanguagesResponse supportedLanguagesResponse = new SupportedLanguagesResponse();
-            Task.Run(async () =>
-            {
-                supportedLanguagesResponse = await dictionaryApi.ResourcesDictionarySupportedLanguagesGetAsync();
-            }).Wait();
             Assert.IsNotNull(supportedLanguagesResponse.Languages);
         }
 

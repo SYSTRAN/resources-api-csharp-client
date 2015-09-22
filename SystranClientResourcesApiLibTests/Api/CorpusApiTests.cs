@@ -23,7 +23,7 @@ namespace Systran.ResourcesClientLib.Api.Tests
         [ClassInitialize()]
         public static void ClassInit(TestContext context)
         {
-            client = new ApiClient("https://platformapi-stag.systran.net:8904");
+            client = new ApiClient("https://platform.systran.net:8904");
             Configuration.apiClient = client;
             Dictionary<String, String> keys = new Dictionary<String, String>();
             string key;
@@ -184,16 +184,6 @@ namespace Systran.ResourcesClientLib.Api.Tests
             Assert.IsNotNull(corpusSegmentListResponse.Segments);
         }
 
-        [TestMethod()]
-        public void ResourcesCorpusSegmentListGetAsyncTest()
-        {
-            CorpusSegmentListResponse corpusSegmentListResponse = new CorpusSegmentListResponse();
-            Task.Run(async () =>
-            {
-                corpusSegmentListResponse = await corpusApi.ResourcesCorpusSegmentListGetAsync(corpusId, null, null, null);
-            }).Wait();
-            Assert.IsNotNull(corpusSegmentListResponse.Segments);
-        }
 
         [TestMethod()]
         public void ResourcesCorpusSegmentTargetAddPostTest()
