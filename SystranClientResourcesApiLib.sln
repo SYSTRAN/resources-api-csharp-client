@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.23107.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SystranClientResourcesApiLib", "SystranClientResourcesApiLib\SystranClientResourcesApiLib.csproj", "{EA23856A-109B-4BE7-8F66-162877D3100A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SystranClientResourcesApiLibTests", "SystranClientResourcesApiLibTests\SystranClientResourcesApiLibTests.csproj", "{E0F2043E-3C30-40E1-A654-080B70D479A0}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{EA23856A-109B-4BE7-8F66-162877D3100A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EA23856A-109B-4BE7-8F66-162877D3100A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EA23856A-109B-4BE7-8F66-162877D3100A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EA23856A-109B-4BE7-8F66-162877D3100A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E0F2043E-3C30-40E1-A654-080B70D479A0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E0F2043E-3C30-40E1-A654-080B70D479A0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E0F2043E-3C30-40E1-A654-080B70D479A0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E0F2043E-3C30-40E1-A654-080B70D479A0}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

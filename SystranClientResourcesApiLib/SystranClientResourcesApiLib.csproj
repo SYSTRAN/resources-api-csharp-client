@@ -1,0 +1,135 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{EA23856A-109B-4BE7-8F66-162877D3100A}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SystranClientResourcesApiLib</RootNamespace>
+    <AssemblyName>SystranClientResourcesApiLib</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=7.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.7.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="RestSharp, Version=105.2.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\RestSharp.105.2.3\lib\net452\RestSharp.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Api\CorpusApi.cs" />
+    <Compile Include="Api\DictionaryApi.cs" />
+    <Compile Include="Client\ApiClient.cs" />
+    <Compile Include="Client\ApiException.cs" />
+    <Compile Include="Client\Configuration.cs" />
+    <Compile Include="Model\Corpus.cs" />
+    <Compile Include="Model\CorpusAddResponse.cs" />
+    <Compile Include="Model\CorpusAddSegment.cs" />
+    <Compile Include="Model\CorpusAddSegmentTarget.cs" />
+    <Compile Include="Model\CorpusDeleteResponse.cs" />
+    <Compile Include="Model\CorpusDetailResponse.cs" />
+    <Compile Include="Model\CorpusExistsResponse.cs" />
+    <Compile Include="Model\CorpusImportResponse.cs" />
+    <Compile Include="Model\CorpusListResponse.cs" />
+    <Compile Include="Model\CorpusMatch.cs" />
+    <Compile Include="Model\CorpusMatches.cs" />
+    <Compile Include="Model\CorpusMatchResponse.cs" />
+    <Compile Include="Model\CorpusSegment.cs" />
+    <Compile Include="Model\CorpusSegmentAddRequest.cs" />
+    <Compile Include="Model\CorpusSegmentAddResponse.cs" />
+    <Compile Include="Model\CorpusSegmentAddTargetRequest.cs" />
+    <Compile Include="Model\CorpusSegmentAddTargetResponse.cs" />
+    <Compile Include="Model\CorpusSegmentDeleteResponse.cs" />
+    <Compile Include="Model\CorpusSegmentDeleteTargetResponse.cs" />
+    <Compile Include="Model\CorpusSegmentListResponse.cs" />
+    <Compile Include="Model\CorpusSegmentTarget.cs" />
+    <Compile Include="Model\CorpusSegmentUpdateResponse.cs" />
+    <Compile Include="Model\CorpusUpdateResponse.cs" />
+    <Compile Include="Model\DictionariesImportResponse.cs" />
+    <Compile Include="Model\DictionariesListFilters.cs" />
+    <Compile Include="Model\DictionariesListMatchFilter.cs" />
+    <Compile Include="Model\DictionariesListResponse.cs" />
+    <Compile Include="Model\DictionariesListSortFilter.cs" />
+    <Compile Include="Model\DictionaryAddBody.cs" />
+    <Compile Include="Model\DictionaryAddInput.cs" />
+    <Compile Include="Model\DictionaryAddOutput.cs" />
+    <Compile Include="Model\DictionaryAddResponse.cs" />
+    <Compile Include="Model\DictionaryOutput.cs" />
+    <Compile Include="Model\DictionaryUpdateBody.cs" />
+    <Compile Include="Model\DictionaryUpdateInput.cs" />
+    <Compile Include="Model\DictionaryUpdateOutput.cs" />
+    <Compile Include="Model\DictionaryUpdateResponse.cs" />
+    <Compile Include="Model\EntriesListFilters.cs" />
+    <Compile Include="Model\EntriesListMatchFilter.cs" />
+    <Compile Include="Model\EntriesListResponse.cs" />
+    <Compile Include="Model\EntriesListSortFilter.cs" />
+    <Compile Include="Model\EntryAddBody.cs" />
+    <Compile Include="Model\EntryAddInput.cs" />
+    <Compile Include="Model\EntryAddOutput.cs" />
+    <Compile Include="Model\EntryAddResponse.cs" />
+    <Compile Include="Model\EntryDeleteBody.cs" />
+    <Compile Include="Model\EntryDeleteInput.cs" />
+    <Compile Include="Model\EntryDeleteResponse.cs" />
+    <Compile Include="Model\EntryOutput.cs" />
+    <Compile Include="Model\EntryUpdateBody.cs" />
+    <Compile Include="Model\EntryUpdateInput.cs" />
+    <Compile Include="Model\EntryUpdateResponse.cs" />
+    <Compile Include="Model\LiteCorpus.cs" />
+    <Compile Include="Model\LookupExpressionObject.cs" />
+    <Compile Include="Model\LookupLanguagePair.cs" />
+    <Compile Include="Model\LookupMatchObject.cs" />
+    <Compile Include="Model\LookupOtherExpression.cs" />
+    <Compile Include="Model\LookupOutputObject.cs" />
+    <Compile Include="Model\LookupResponse.cs" />
+    <Compile Include="Model\LookupResults.cs" />
+    <Compile Include="Model\LookupSourceObject.cs" />
+    <Compile Include="Model\LookupSupportedLanguageResponse.cs" />
+    <Compile Include="Model\LookupTargetObject.cs" />
+    <Compile Include="Model\SupportedLanguagesResponse.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+    <None Include="README.md" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
