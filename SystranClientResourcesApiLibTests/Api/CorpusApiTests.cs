@@ -27,7 +27,7 @@ namespace Systran.ResourcesClientLib.Api.Tests
             Configuration.apiClient = client;
             Dictionary<String, String> keys = new Dictionary<String, String>();
             string key;
-            using (StreamReader streamReader = new StreamReader("../../key.txt", Encoding.UTF8))
+            using (StreamReader streamReader = new StreamReader("../../apiKey.txt", Encoding.UTF8))
             {
                 key = streamReader.ReadToEnd();
             }
@@ -139,17 +139,7 @@ namespace Systran.ResourcesClientLib.Api.Tests
             Assert.IsNotNull(corpusListResponse.Files);
         }
 
-        [TestMethod()]
-        public void ResourcesCorpusMatchGetTest()
-        {       
-            List<string> corpusList = new List<string>();
-            corpusList.Add(corpusId);
-            List<string> input = new List<string>();
-            input.Add("dotNetTest");
-            CorpusMatchResponse corpusMatchResponse = new CorpusMatchResponse();
-            corpusMatchResponse = corpusApi.ResourcesCorpusMatchGet(corpusList, input, "en", "fr", null, null, null);
-            Assert.IsNotNull(corpusMatchResponse.Matches);
-        }
+      
 
         [TestMethod()]
         public void ResourcesCorpusSegmentAddPostTest()
@@ -206,27 +196,6 @@ namespace Systran.ResourcesClientLib.Api.Tests
             corpusSegmentAddTargetResponse = corpusApi.ResourcesCorpusSegmentTargetAddPost(corpusSegmentAddTargetRequest, null);
             Assert.IsNotNull(corpusSegmentAddTargetResponse.Added);
         }
-        /*
-                [TestMethod()]
-                public void ResourcesCorpusSegmentTargetDeletePostTest()
-                {
-                    CorpusSegmentDeleteTargetResponse corpusSegmentDeleteTargetResponse = new CorpusSegmentDeleteTargetResponse();
-                    corpusSegmentDeleteTargetResponse = corpusApi.ResourcesCorpusSegmentTargetDeletePost(corpusId, segmentId, "targid", null);
-                    Assert.IsNotNull(corpusSegmentDeleteTargetResponse.Deleted);
-
-                }
-
-                [TestMethod()]
-                public void ResourcesCorpusSegmentTargetDeletePostAsyncTest()
-                {
-                    CorpusSegmentDeleteTargetResponse corpusSegmentDeleteTargetResponse = new CorpusSegmentDeleteTargetResponse();
-                    Task.Run(async () =>
-                    {
-                        corpusSegmentDeleteTargetResponse = await corpusApi.ResourcesCorpusSegmentTargetDeletePostAsync(corpusId, segmentId, "targid", null);
-                    }).Wait();
-                    Assert.IsNotNull(corpusSegmentDeleteTargetResponse.Deleted);
-                }*/
-
 
         [TestMethod()]
         public void ResourcesCorpusSegmentUpdatePostTest()
@@ -235,7 +204,7 @@ namespace Systran.ResourcesClientLib.Api.Tests
             corpusSegmentListResponse = corpusApi.ResourcesCorpusSegmentListGet(corpusId, null, null, null);
 
             CorpusSegmentUpdateResponse corpusSegmentUpdateResponse = new CorpusSegmentUpdateResponse();
-            corpusSegmentUpdateResponse = corpusApi.ResourcesCorpusSegmentUpdatePost(corpusId, corpusSegmentListResponse.Segments[0].Id, "source", "nouveau segment cible", "target", "targetLand", null);
+            corpusSegmentUpdateResponse = corpusApi.ResourcesCorpusSegmentUpdatePost(corpusId, corpusSegmentListResponse.Segments[0].Id, "source",null, null, null, null);
             Assert.IsNotNull(corpusSegmentUpdateResponse.Updated);
         }
 
@@ -245,6 +214,18 @@ namespace Systran.ResourcesClientLib.Api.Tests
             CorpusUpdateResponse corpusUpdateResponse = new CorpusUpdateResponse();
             corpusUpdateResponse = corpusApi.ResourcesCorpusUpdatePost(corpusId, "dotNetTest", null, null);
             Assert.IsNotNull(corpusUpdateResponse.Updated);
+        }
+
+        [TestMethod()]
+        public void ResourcesCorpusMatchGetTest()
+        {
+            List<string> corpusList = new List<string>();
+            corpusList.Add(corpusId);
+            List<string> input = new List<string>();
+            input.Add("test");
+            CorpusMatchResponse corpusMatchResponse = new CorpusMatchResponse();
+            corpusMatchResponse = corpusApi.ResourcesCorpusMatchGet(corpusList, input, "en", "fr", null, null, null);
+            Assert.IsNotNull(corpusMatchResponse.Matches);
         }
 
         [TestMethod()]

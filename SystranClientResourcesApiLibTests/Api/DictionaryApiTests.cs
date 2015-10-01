@@ -27,7 +27,7 @@ namespace Systran.ResourcesClientLib.Api.Tests
             Configuration.apiClient = client;
             Dictionary<String, String> keys = new Dictionary<String, String>();
             string key;
-            using (StreamReader streamReader = new StreamReader("../../key.txt", Encoding.UTF8))
+            using (StreamReader streamReader = new StreamReader("../../apiKey.txt", Encoding.UTF8))
             {
                 key = streamReader.ReadToEnd();
             }
@@ -130,20 +130,6 @@ namespace Systran.ResourcesClientLib.Api.Tests
             entryUpdateResponse = dictionaryApi.ResourcesDictionaryEntryUpdatePost(dictionaryId, entryUpdateBody);
             Assert.IsNotNull(entryUpdateResponse.TargetId);
         }
-
-        /*    [TestMethod()]
-          public void ResourcesDictionaryEntryUpdatePostAsyncTest()
-           {
-               EntryUpdateBody entryUpdateBody = new EntryUpdateBody();
-               EntryUpdateResponse entryUpdateResponse = new EntryUpdateResponse();
-               Task.Run(async () =>
-               {
-                   entryUpdateResponse = await dictionaryApi.ResourcesDictionaryEntryUpdatePostAsync(dictionaryId, entryUpdateBody);
-               }).Wait();
-               Assert.IsNotNull(entryUpdateResponse.TargetId);
-           }*/
-
- 
 
         [TestMethod()]
         public void ResourcesDictionaryListPostTest()
