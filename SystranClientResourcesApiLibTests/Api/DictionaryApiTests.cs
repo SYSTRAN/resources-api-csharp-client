@@ -52,7 +52,7 @@ namespace Systran.ResourcesClientLib.Api.Tests
             dictionaryAddInput.SourceLang = "en";
             dictionaryAddInput.TargetLangs = "fr";
             dictionaryAddInput.Name = "testCsharpClient";
-            dictionaryAddInput.Type = "";
+            dictionaryAddInput.Type = "UD";
             dictionaryAddInput.Comments = "This dictionary has been created for csharp client testing purposes";
 
             dictionaryAddBody.Dictionary = dictionaryAddInput;
@@ -83,14 +83,6 @@ namespace Systran.ResourcesClientLib.Api.Tests
             EntryAddResponse entryAddResponse = new EntryAddResponse();
             entryAddResponse = dictionaryApi.ResourcesDictionaryEntryAddPost(dictionaryId, entryAddBody);
             Assert.IsNotNull(entryAddResponse);
-        }
-
-        [TestMethod()]
-        public void ResourcesDictionaryEntryImportPostTest()
-        {
-            DictionariesImportResponse dictionariesImportResponse = new DictionariesImportResponse();
-            dictionariesImportResponse = dictionaryApi.ResourcesDictionaryEntryImportPost(dictionaryId, "en", "../../entries.txt");
-            Assert.IsNotNull(dictionariesImportResponse.Total);
         }
 
         [TestMethod()]

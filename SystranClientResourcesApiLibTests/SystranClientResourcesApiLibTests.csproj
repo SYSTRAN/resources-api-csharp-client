@@ -61,9 +61,6 @@
       <Name>SystranClientResourcesApiLib</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Content Include="entries.txt" />
-  </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
       <ItemGroup>

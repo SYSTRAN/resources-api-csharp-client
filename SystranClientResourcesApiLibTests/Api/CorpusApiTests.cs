@@ -18,7 +18,7 @@ namespace Systran.ResourcesClientLib.Api.Tests
         private static CorpusApi corpusApi;
         private static string segmentId;
         private static string corpusId;
-
+        private static string exportedCorpus;
 
         [ClassInitialize()]
         public static void ClassInit(TestContext context)
@@ -97,9 +97,8 @@ namespace Systran.ResourcesClientLib.Api.Tests
         [TestMethod()]
         public void ResourcesCorpusExportGetTest()
         {
-            string corpusExport;
-            corpusExport = corpusApi.ResourcesCorpusExportGet(corpusId, null, null);
-            Assert.IsNotNull(corpusExport);
+            exportedCorpus  = corpusApi.ResourcesCorpusExportGet(corpusId, null, null);
+            Assert.IsNotNull(exportedCorpus);
         }
 
 
@@ -107,7 +106,7 @@ namespace Systran.ResourcesClientLib.Api.Tests
         public void ResourcesCorpusImportPostTest()
         {
             CorpusImportResponse corpusImportResponse = new CorpusImportResponse();
-            corpusImportResponse = corpusApi.ResourcesCorpusImportPost("dotNetTest2", "", null, "application/x-tmx+xml", null, null);
+            corpusImportResponse = corpusApi.ResourcesCorpusImportPost("dotNetTest2", exportedCorpus, null, "application/x-tmx+xml", null, null);
 
             List<string> corpusList = new List<string>();
             corpusList.Add(corpusImportResponse.Corpus.Id);

@@ -1,1 +1,0 @@
-﻿{ "entry": { "sourceLang": "fr", "targetLang": "en", "source": "sample", "target": "échantillon", "type": "", "sourcePos": "", "targetPos": "", "priority": ""} }
