@@ -25,13 +25,15 @@ namespace Systran.ResourcesClientLib.Api.Tests
         {
             client = new ApiClient("https://platform.systran.net:8904");
             Configuration.apiClient = client;
+            if (!File.Exists("../../apiKey.txt"))
+                throw new Exception("To properly run the tests, please add an apiKey.txt file containing your api key in the SystranClientRessourcesApiLibTests folder or edit the test file with your key");
             Dictionary<String, String> keys = new Dictionary<String, String>();
             string key;
             using (StreamReader streamReader = new StreamReader("../../apiKey.txt", Encoding.UTF8))
             {
                 key = streamReader.ReadToEnd();
             }
-            keys.Add("key", key); Configuration.apiKey = keys; Configuration.apiKey = keys;
+            keys.Add("key", key);
             Configuration.apiKey = keys;
             corpusApi = new CorpusApi(Configuration.apiClient);
         }
